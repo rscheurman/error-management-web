@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-error-dashboard',
-  templateUrl: './error-dashboard.component.html',
-  styleUrls: ['./error-dashboard.component.css']
+  selector: 'app-password-reset',
+  templateUrl: './password-reset.component.html',
+  styleUrls: ['./password-reset.component.css']
 })
-export class ErrorDashboardComponent implements OnInit {
+export class PasswordResetComponent implements OnInit {
 
   constructor(public auth:AuthService) { }
 
