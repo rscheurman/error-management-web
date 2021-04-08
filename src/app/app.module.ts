@@ -12,6 +12,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth'
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { PasswordResetConfirmComponent } from './pages/password-reset/password-reset-confirm/password-reset-confirm.component';
+import { AuthGuard } from './core/auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { PasswordResetConfirmComponent } from './pages/password-reset/password-r
 
     
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
