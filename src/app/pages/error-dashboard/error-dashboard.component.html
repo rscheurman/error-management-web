@@ -3,15 +3,15 @@
     <a href="/" class="text-2xl no-underline text-white hover:text-blue-dark">Error Console</a>
   </div>
   <div>
-    <a href="/" class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-large font-sans">Example Button 1</a>
-    <a href="/" class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-large font-sans">Example Button 2</a>
+    <a class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-large font-sans" *ngFor="let project of projects | async">{{ project.projectName }}</a>
     <a *ngIf="auth.isLoggedIn == true" (click)="auth.logout()" style="cursor: pointer;" class="text-white bg-blue-600 text-white px-3 py-2 mx-1 rounded-md text-large font-sans">Logout</a>
 
   </div>
 </nav>
 
-<p class="text-lg text-center font-bold m-5">Dark Table Design</p>
-<table class="rounded-t-lg m-5 w-6/6 mx-auto bg-gray-800 text-gray-200">
+<p class="text-lg text-center font-bold m-5">Project Name</p>
+<table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+
 <tr class="text-left border-b border-gray-300">
   <th class="px-4 py-3">Timestamp</th>
   <th class="px-4 py-3">Error Type</th>
@@ -19,12 +19,14 @@
   <th class="px-4 py-3">Container</th>
   <th class="px-4 py-3">Function</th>
 </tr>
-<tr class="bg-gray-700 border-b border-gray-600">
-  <td class="px-4 py-3">9 Mar 2021 02:09:55</td>
-  <td class="px-4 py-3">Error</td>
-  <td class="px-4 py-3">A sheet with the name "Parkway 1 Printout1" already exists. Please enter another name.</td>
-  <td class="px-4 py-3">Lake Saint Louis Page ConnectionTracker</td>
-  <td class="px-4 py-3">statUpdate</td>
-</tr>    
+
+<tr class="bg-gray-700 border-b border-gray-600"  *ngFor="let error of projectErrors | async">
+  <td class="px-4 py-3">{{ error.timeStamp }}</td>
+  <td class="px-4 py-3">{{error.errorType}}</td>
+  <td class="px-4 py-3">{{ error.errorMessage }}</td>
+  <td class="px-4 py-3">{{ error.container }}</td>
+  <td class="px-4 py-3">{{ error.insideFunction }}</td>
+</tr>   
+ 
 </table> 
 
