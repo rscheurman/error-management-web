@@ -75,7 +75,6 @@ export class AuthService {
       email: user.email,
       uid: user.uid,
     }
-    console.log('this is the user data' + user.uid)
     return userRef.set(userData, {
       merge: true
     })
