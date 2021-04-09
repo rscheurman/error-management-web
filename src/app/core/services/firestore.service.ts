@@ -8,8 +8,8 @@ export class FirestoreService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getErrors() {
-    return this.firestore.collection('projects').doc('Connection Tracker').collection('errors').valueChanges()
+  getErrors(project:string) {
+    return this.firestore.collection('projects').doc(project).collection('errors').valueChanges()
   }
 
   getProjects() {

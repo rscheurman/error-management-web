@@ -9,17 +9,20 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./error-dashboard.component.css']
 })
 export class ErrorDashboardComponent implements OnInit {
+  currentProject!:string
+  projectErrors:Observable<any[]> = this.firestore.getErrors(this.currentProject)
   projects:Observable<any[]> = this.firestore.getProjects()
-  projectErrors:Observable<any[]> = this.firestore.getErrors()
 
-  constructor(public auth:AuthService, public firestore:FirestoreService) { 
-  }
-
-  ngOnInit(): void {
+  constructor(public auth:AuthService, public firestore:FirestoreService) {
   }
 
   getErrors() {
+    this.projectErrors = this.firestore.getErrors(this.currentProject)
   }
+
+  ngOnInit() {
+  }
+
 
 
 }

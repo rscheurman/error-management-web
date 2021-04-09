@@ -3,7 +3,7 @@
     <a href="/" class="text-2xl no-underline text-white hover:text-blue-dark">Error Console</a>
   </div>
   <div>
-    <a class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-large font-sans" *ngFor="let project of projects | async">{{ project.projectName }}</a>
+    <a class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-large font-sans" (click)="currentProject=project.projectName; getErrors()" style="cursor: pointer;" *ngFor="let project of projects | async">{{ project.projectName }}</a>
     <a *ngIf="auth.isLoggedIn == true" (click)="auth.logout()" style="cursor: pointer;" class="text-white bg-blue-600 text-white px-3 py-2 mx-1 rounded-md text-large font-sans">Logout</a>
 
   </div>
@@ -13,11 +13,11 @@
 <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
 
 <tr class="text-left border-b border-gray-300">
-  <th class="px-4 py-3">Timestamp</th>
-  <th class="px-4 py-3">Error Type</th>
-  <th class="px-4 py-3">Error Message</th>
-  <th class="px-4 py-3">Container</th>
-  <th class="px-4 py-3">Function</th>
+  <th class="px-4 py-3 w-1/12">Timestamp</th>
+  <th class="px-4 py-3 w-2/12">Error Type</th>
+  <th class="px-4 py-3 w-4/12">Error Message</th>
+  <th class="px-4 py-3 w-3/12">Container</th>
+  <th class="px-4 py-3 w-2/12">Function</th>
 </tr>
 
 <tr class="bg-gray-700 border-b border-gray-600"  *ngFor="let error of projectErrors | async">
@@ -29,4 +29,3 @@
 </tr>   
  
 </table> 
-
