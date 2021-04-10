@@ -27,9 +27,6 @@ export class AuthService {
         })
       } else {
         localStorage.removeItem('user')
-        ngZone.run(() => {
-          router.navigate(['login'])
-        })
       }
     })
   }
