@@ -1,6 +1,6 @@
 <nav class="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-gray-800 shadow sm:items-baseline w-full">
   <div class="mb-2 sm:mb-0">
-    <a href="/" class="text-2xl no-underline text-white hover:text-blue-dark">Error Console</a>
+    <a class="text-2xl no-underline text-white hover:text-blue-dark">Error Console</a>
   </div>
   <div>
     <a class="text-white hover:bg-blue-600 hover:text-white px-3 py-2 rounded-md text-large font-sans" (click)="currentProject=project.projectName; getErrors()" style="cursor: pointer;" *ngFor="let project of projects | async">{{ project.projectName }}</a>
@@ -9,7 +9,7 @@
   </div>
 </nav>
 
-<p class="text-lg text-center font-bold m-5">Project Name</p>
+<p class="text-lg text-center font-bold m-5">{{ currentProject }}</p>
 <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
 
 <tr class="text-left border-b border-gray-300">
