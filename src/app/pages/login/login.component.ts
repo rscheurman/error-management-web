@@ -9,11 +9,7 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public auth:AuthService, private router:Router) {
-    if(auth.isLoggedIn) {
-      router.navigate(['dashboard'])
-    }
-  }
+  constructor(public auth:AuthService, private router:Router) {}
 
   ngOnInit(): void {
   }

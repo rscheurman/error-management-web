@@ -1,7 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
+import { FirebaseApp } from '@angular/fire';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app'
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ export class AuthService {
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
+    public firebase: FirebaseApp,
     public router: Router,
     public ngZone: NgZone
   ) { 
@@ -19,8 +22,14 @@ export class AuthService {
       if(user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
+        ngZone.run(() => {
+          router.navigate(['dashboard'])
+        })
       } else {
         localStorage.removeItem('user')
+        ngZone.run(() => {
+          router.navigate(['login'])
+        })
       }
     })
   }
@@ -38,15 +47,21 @@ export class AuthService {
   }
 
   signIn(email: string, password: string) {
-    this.afAuth.signInWithEmailAndPassword(email, password)
-    .then((result) => {
-      this.ngZone.run(() => {
-        this.router.navigate(['dashboard'])
+    this.afAuth.setPersistence(firebase.default.auth.Auth.Persistence.LOCAL).then(() => {
+      return this.afAuth.signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard'])
+          console.log('user logged in')
+        })
+        this.setUserData(result.user)
+      }).catch((e) => {
+        window.alert(e.message)
       })
-      this.setUserData(result.user)
-    }).catch((e) => {
-      window.alert(e.message)
+    }).catch((error) => {
+      window.alert(error)
     })
+
   }
 
   forgotPassword(passwordResetEmail:any) {
