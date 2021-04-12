@@ -9,7 +9,7 @@ export class FirestoreService {
   constructor(private firestore: AngularFirestore) { }
 
   getErrors(project:string) {
-    return this.firestore.collection('projects').doc(project).collection('errors').valueChanges()
+    return this.firestore.collection('projects').doc(project).collection('errors', ref => ref.orderBy('unixTs', 'desc')).valueChanges()
   }
 
   getProjects() {
