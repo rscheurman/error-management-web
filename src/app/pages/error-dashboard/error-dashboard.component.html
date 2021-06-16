@@ -8,9 +8,12 @@
 
   </div>
 </nav>
-
+<router-outlet></router-outlet>
 <p class="text-lg text-center font-bold m-5">{{ currentProject }}</p>
-<table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200">
+
+<table 
+class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-800 text-gray-200"
+>
 
 <tr class="text-left border-b border-gray-300">
   <th class="px-4 py-3 w-1/12">Timestamp</th>
@@ -18,14 +21,20 @@
   <th class="px-4 py-3 w-4/12">Error Message</th>
   <th class="px-4 py-3 w-3/12">Container</th>
   <th class="px-4 py-3 w-2/12">Function</th>
+  <th class="px-4 py-3 w-2/12"></th>
 </tr>
 
 <tr class="bg-gray-700 border-b border-gray-600"  *ngFor="let error of projectErrors | async">
   <td class="px-4 py-3">{{ error.timeStamp }}</td>
-  <td class="px-4 py-3">{{error.errorType}}</td>
+  <td class="px-4 py-3">{{ error.errorType }}</td>
   <td class="px-4 py-3">{{ error.errorMessage }}</td>
   <td class="px-4 py-3">{{ error.container }}</td>
   <td class="px-4 py-3">{{ error.insideFunction }}</td>
+  <td class="px-4 py-3">
+    <a [routerLink]="['/edit', currentProject, error.unixTs, error.errorType]" class="bg-gray-200 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded inline-flex items-center">Edit</a>
+  </td>
+
+
 </tr>   
  
 </table> 

@@ -1,0 +1,160 @@
+<div class="flex items-center min-h-screen bg-white dark:bg-gray-900">
+  <div class="container mx-auto">
+    <div class="flex items-center">
+      <div class="w-full px-4">
+        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-700 border-0">
+          <div class="rounded-t-lg bg-gray-800 mb-0 px-6 py-6">
+            <div class="text-center flex justify-between">
+              <h6 class="text-gray-200 text-xl font-bold">Error Details</h6>
+              <div>
+              <button
+                class="bg-green-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-4 ease-linear transition-all duration-150"
+                type="button"
+              >
+                Resolved
+              </button>
+              <button
+              [ngClass]="{'bg-blue-500' : escalateStatus === true, 'bg-yellow-500' : escalateStatus === false}"
+              (click)="changeEscalateStatus()"
+              class="text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-4 ease-linear transition-all duration-150"
+              type="button"
+            >
+              {{ escalateStatus == false ? 'Escalate' : 'Escalated' }}
+            </button>
+            <button
+            class="bg-red-500 text-white active:bg-red-700 font-bold text-center uppercase text-xs px-5 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+            type="button"
+            (click)="deleteError()"
+          >
+            Delete
+          </button>
+          </div>
+            </div>
+          </div>
+          <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+            <form>
+              <h6 class="text-gray-200 text-sm mt-3 mb-6 font-bold uppercase">
+                Information
+              </h6>
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-4/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-200 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                    Date
+                    <div></div>
+                    </label>
+                    <input
+                      type="text"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      [value]="timeStamp"
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-4/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-200 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Container
+                    </label>
+                    <input
+                      type="email"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      [value]=container
+                      
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-4/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-200 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Function
+                    </label>
+                    <input
+                      type="text"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      [value]="insideFunction"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6 border-b-1 border-blueGray-300" />
+
+              <h6 class="text-gray-200 text-sm mt-3 mb-6 font-bold uppercase">
+                Error Information
+              </h6>
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-3/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-200 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Error Type
+                    </label>
+                    <input
+                      type="email"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      [value]="userEmail"
+                    />
+                  </div>
+                </div>
+                <div class="w-full lg:w-9/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-gray-200 text-xs font-bold mb-2"
+                      htmlFor="grid-password"
+                    >
+                      Error Message
+                    </label>
+                    <input
+                      type="text"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      [value]="userEmail"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mt-6 border-b-1 border-blueGray-300" />
+
+              <h6 class="text-gray-200 text-sm mt-3 mb-6 font-bold uppercase">
+                Notes
+              </h6>
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-12/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <textarea
+                      type="text"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      rows="4"
+                                    
+                    >Notes
+                        </textarea
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button class="bg-green-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150" type="button">
+                  <i class="fas fa-heart"></i>✔️ Save
+                </button>
+                <button class="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                  <i class="fas fa-heart"></i>❌ Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

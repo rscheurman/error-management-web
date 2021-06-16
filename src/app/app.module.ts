@@ -13,6 +13,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { PasswordResetConfirmComponent } from './pages/password-reset/password-reset-confirm/password-reset-confirm.component';
 import { AuthGuard } from './core/guard/auth.guard';
+import { EditErrorComponent } from './pages/error-dashboard/edit-error/edit-error.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AuthGuard } from './core/guard/auth.guard';
     ErrorDashboardComponent,
     SignUpComponent,
     PasswordResetComponent,
-    PasswordResetConfirmComponent
+    PasswordResetConfirmComponent,
+    EditErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { AuthGuard } from './core/guard/auth.guard';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    FormsModule
 
     
   ],

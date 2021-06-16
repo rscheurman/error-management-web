@@ -12,6 +12,8 @@ export class ErrorDashboardComponent implements OnInit {
   currentProject!:string
   projectErrors:Observable<any[]> = this.firestore.getErrors(this.currentProject)
   projects:Observable<any[]> = this.firestore.getProjects()
+  errorToEdit?:object;
+  error?:object;
 
   constructor(public auth:AuthService, public firestore:FirestoreService) {
   }
@@ -22,7 +24,4 @@ export class ErrorDashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
-
 }
